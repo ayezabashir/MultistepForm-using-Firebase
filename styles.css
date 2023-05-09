@@ -14,7 +14,9 @@ body {
 }
 
 button {
+  background: #ff5f6d;
+  background: linear-gradient(to bottom, #ffc371, #ff5f6d);
+  color: #ffffff;
+  border: 0;
   padding: 8px 20px;
-  outline: none;
-  border: 1px solid #ff5f6d;
 }

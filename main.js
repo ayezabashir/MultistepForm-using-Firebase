@@ -19,8 +19,6 @@ multiStepForm.addEventListener('click', (e) => {
         currentStep -= 1;
         showCurrentStep();
     }
-    // reportValidity() checks for the validation, and returns boolean if the REQUIRED feilds are filled or not
-
 })
 
 function showCurrentStep() {
