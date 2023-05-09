@@ -1,0 +1,20 @@
+body {
+  background: #ff5f6d;
+  background: linear-gradient(to right, #ffc371, #ff5f6d);
+  color: #ffffff;
+  margin-top: 50px;
+}
+.card {
+  background: transparent;
+  box-shadow: 2px 3px 10px #ff5f6d, -4px 6px 2px #ffc371;
+  display: none;
+}
+.card.active {
+  display: block;
+}
+
+button {
+  padding: 8px 20px;
+  outline: none;
+  border: 1px solid #ff5f6d;
+}
