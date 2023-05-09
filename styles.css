@@ -20,3 +20,8 @@ button {
   border: 0;
   padding: 8px 20px;
 }
+.alert {
+  display: none;
+  position: absolute;
+  top: 0px;
+}

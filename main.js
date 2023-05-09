@@ -26,3 +26,9 @@ function showCurrentStep() {
         step.classList.toggle('active', index === currentStep);
     })
 }
+
+multiStepForm.addEventListener('submit', () => {
+    currentStep = 0;
+    showCurrentStep();
+    multiStepForm.reset();
+})

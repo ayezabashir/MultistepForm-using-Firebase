@@ -16,9 +16,10 @@
   </head>
   <body>
     <div class="container">
-      <form data-multi-step class="w-50 mx-auto">
+      <form data-multi-step class="w-50 mx-auto" id="registerationForm">
         <!-- Step 1 -->
         <div class="card border-0 p-5" data-step>
+          <p class="alert text-center">Form Submitted Successfully</p>
           <h3 class="text-center">Email Details</h3>
           <div class="form-group mb-3">
             <label class="form-label" for="email">Email</label>
@@ -128,5 +129,83 @@
         </div>
       </form>
     </div>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCee8OVCxrqNSwQhz6aiRRh6ayKsDTXcKA",
+        authDomain: "registerationform-5e6b4.firebaseapp.com",
+        databaseURL:
+          "https://registerationform-5e6b4-default-rtdb.firebaseio.com",
+        projectId: "registerationform-5e6b4",
+        storageBucket: "registerationform-5e6b4.appspot.com",
+        messagingSenderId: "122445657567",
+        appId: "1:122445657567:web:56e4d44097d5d9be94406a",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      import {
+        getDatabase,
+        ref,
+        set,
+      } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+
+      document
+        .getElementById("registerationForm")
+        .addEventListener("submit", formSubmit);
+      function formSubmit(e) {
+        e.preventDefault();
+        // Get Values from the DOM
+        let email = document.querySelector("#email").value;
+        let password = document.querySelector("#password").value;
+        let address = document.querySelector("#address").value;
+        let city = document.querySelector("#city").value;
+        let zipcode = document.querySelector("#zipcode").value;
+        let fname = document.querySelector("#fname").value;
+        let lname = document.querySelector("#lname").value;
+        let age = document.querySelector("#age").value;
+
+        //send message values(3)
+        sendMessage(email, password, address, city, zipcode, fname, lname, age);
+      }
+      //Send Message to Firebase(4)
+      function sendMessage(
+        email,
+        password,
+        address,
+        city,
+        zipcode,
+        fname,
+        lname,
+        age
+      ) {
+        const database = getDatabase();
+
+        set(ref(database, "users/" + Math.floor(Math.random() * 10000000)), {
+          email: email,
+          password: password,
+          address: address,
+          city: city,
+          zipcode: zipcode,
+          fname: fname,
+          lname: lname,
+          age: age,
+        })
+          .then(() => {
+            //Show Alert Message(5)
+            document.querySelector(".alert").style.display = "block";
+            //Hide Alert Message After Seven Seconds(6)
+            setTimeout(function () {
+              document.querySelector(".alert").style.display = "none";
+            }, 7000);
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      }
+    </script>
   </body>
 </html>
